@@ -58,7 +58,7 @@ const blogConfig = {
 		/** 使用 pnpm new 新建文章时自动生成自定义链接（permalink/abbrlink） */
 		useRandomPremalink: false,
 		/** 隐藏基于文件路由（不是自定义链接）的 URL /post 路径前缀 */
-		hidePostPrefix: true,
+		hidePostPrefix: false,
 		/** 禁止搜索引擎收录的路径 */
 		robotsNotIndex: ['/preview', '/previews/*'],
 	},
