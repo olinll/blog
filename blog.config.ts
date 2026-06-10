@@ -1,26 +1,26 @@
 import type { FeedEntry } from './app/types/feed'
 
 const basicConfig = {
-	title: '纸鹿摸鱼处',
-	subtitle: '纸鹿至麓不知路，支炉制露不止漉',
+	title: 'Olinl Blog',
+	subtitle: '如果爱情有颜色，那一定是白色的',
 	// 长 description 利好于 SEO
-	description: '纸鹿本鹿的个人博客，分享技术与生活。“折腾不止，摸鱼生活——摸门🙏🏻”。纸鹿是一名开源爱好者，结识了许多志同道合的朋友。这个博客记录了他在生活和技术学习中的点滴经历，充满启发与思考。网站界面简洁美观，内容丰富实用，人气互动活跃，涵盖了编程、生活、学习等多个领域，为读者提供了卓越的阅读体验。',
+	description: '记录技术成长路上的思考与实践，分享编程开发、技术探索和问题解决的心得体会。在这里，你可以找到实用的技术教程、开发经验总结、以及各种有趣的技术发现。让我们一起在代码的世界里不断学习，持续进步。',
 	author: {
-		name: '纸鹿本鹿',
-		avatar: 'https://www.zhilu.site/api/avatar.png',
-		email: 'hi@zhilu.cyou',
-		homepage: 'https://www.zhilu.site/',
+		name: '顾拾柒',
+		avatar: 'https://q2.qlogo.cn/headimg_dl?dst_uin=9892214&spec=0',
+		email: 'olinl@foxmail.com',
+		homepage: 'https://www.olinl.com/',
 	},
 	copyright: {
 		abbr: 'CC BY-NC-SA 4.0',
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	favicon: 'https://www.zhilu.site/api/icon.png',
+	favicon: 'https://q2.qlogo.cn/headimg_dl?dst_uin=9892214&spec=0',
 	language: 'zh-CN',
-	timeEstablished: '2019-07-19',
+	timeEstablished: '2026-04-28',
 	timeZone: 'Asia/Shanghai',
-	url: 'https://blog.zhilu.site/',
+	url: 'https://blog.olinl.com/',
 	defaultCategory: '未分类',
 }
 
@@ -74,17 +74,17 @@ const blogConfig = {
 	/** 向 <head> 中添加脚本 */
 	scripts: [
 		// 自己部署的 Umami 统计服务
-		{ 'src': 'https://zhi.zhilu.site/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
+		{ 'src': 'https://umami.olinl.com/olinl_u.js', 'data-website-id': '71de627e-31d7-4e39-b44a-ad899c628a5b', 'defer': true },
 		// 自己网站的 Cloudflare Insights 统计服务
-		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
+		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "3271269be3f84392962f46b2ec90704d"}', 'defer': true },
 		// Twikoo 评论系统
 		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true },
 	],
 
 	/** 自己部署的 Twikoo 服务 */
 	twikoo: {
-		envId: 'https://twikoo.zhilu.site/',
-		preload: 'https://twikoo.zhilu.site/',
+		envId: 'https://twikoo.olinl.com/',
+		preload: 'https://twikoo.olinl.com/',
 	},
 }
 
