@@ -14,9 +14,7 @@ tags:
 这里使用的面板是：[mhsanaei/3x-ui](https://github.com/mhsanaei/3x-ui)
 
 ::alert{type="info" title="3X-UI"}
-
 作为原始 X-UI 项目的增强版本，3X-UI 提供了更好的稳定性、更广泛的协议支持和额外的功能。
-
 ::
 
 ## 一、准备工作
@@ -68,9 +66,7 @@ Base URI path set successfully
 这里如果有域名选择1（提供90天有效期的SSL证书，自动更新），没有域名选择2（提供6天有效期的SSL证书，自动更新）
 
 ::alert{type="warning" title="注意"}
-
 如果你有域名，请将域名解析至你的vps的ip 以便自动申请SSL证书
-
 ::
 
 ```bash
@@ -167,8 +163,6 @@ x-ui v3.2.0 installation finished, it is running now...
 │  x-ui install      - Install                          │
 │  x-ui uninstall    - Uninstall                        │
 └───────────────────────────────────────────────────────┘
-
-
 ```
 
 ### 安装完成
@@ -190,7 +184,6 @@ API Token:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 :::alert{title="信息"}
-
 **Username**：面板登录的用户名  
 **Password**：面板登录的密码  
 **Port**：面板登录的端口  
@@ -198,21 +191,16 @@ API Token:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 **Database**：面板的数据存储位置  
 **Access URL**：最终的访问地址  
 **API Token**：新版本的Api接口Token，安装时自动创建，可在后台删除
-
 :::
 
 :::alert{type="warning" title="关于SSL证书"}
-
 如果你的面板没有配置SSL证书，切勿直接在浏览器中访问，需要使用SSH隧道访问，否则后期容易出现安全漏洞等问题
-
 :::
 
 ### 开启 BBR 加速
 
 :::alert{type="question" title="什么是BBR?"}
-
 BBR 是 Google 设计的 TCP 拥塞控制算法，能根据网络带宽和延迟动态调整传输速度，提升网络吞吐量并降低延迟。
-
 :::
 
 **一键开启BBR加速**
@@ -237,12 +225,16 @@ echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf echo "net.ipv4.tcp_congesti
 
 其他的安全设置可自行参考 面板设置-->安全设定
 
-![安全设置](https://img.olinl.com/blog_img/2026/06/20260611123827936-0902b9.png)
+:::pic
+---
+src: https://img.olinl.com/blog_img/2026/06/20260611123827936-0902b9.png
+---
+#caption
+安全设置
+:::
 
-:::alert{type="warning title="注意"}
-
+:::alert{type="warning" title="注意"}
 所有的配置修改完成后需要保存并重启面板才能生效。
-
 :::
 
 ### 添加节点（可选）
@@ -252,7 +244,13 @@ echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf echo "net.ipv4.tcp_congesti
 
 点击左侧菜单的节点，点击页面的添加节点按钮
 
-![添加节点](https://img.olinl.com/blog_img/2026/06/20260611123923573-5c615a.png)
+:::pic
+---
+src: https://img.olinl.com/blog_img/2026/06/20260611123923573-5c615a.png
+---
+#caption
+添加节点
+:::
 
 地址就填写上面配置SSL的域名或者IP地址  
 `Base Path`需要填写安装完成时的`WebBasePath`或者到 `面板设置-->常规--> URL路径` 里面进行查看  
@@ -266,13 +264,11 @@ echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf echo "net.ipv4.tcp_congesti
 这里只介绍2种协议（`vless+websocket+tls`、`vless+xhttp+reality`）
 
 :::alert{type="question" title="科普"}
-
 1. VLESS + WebSocket + TLS
    **必须拥有并解析域名**，通过 WebSocket 将流量伪装成正常的 HTTPS 网站浏览，由 TLS 证书提供强制加密与身份验证。
 2. VLESS + xHTTP + Reality
    **无需域名**，通过协议直接借用目标网站的 TLS 证书与指纹特征进行模拟，在免去域名配置的同时实现极高的隐蔽性与抗封锁能力。
 **如果想要了解更多，请自行AI**
-
 :::
 
 **vless+websocket+tls**
@@ -281,51 +277,83 @@ echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf echo "net.ipv4.tcp_congesti
 
 整体配置如下：
 
-![vless-websocket-tls 添加入站信息](https://img.olinl.com/blog_img/2026/06/20260611124119349-45eff8.png)
+:::pic
+---
+src: https://img.olinl.com/blog_img/2026/06/20260611124119349-45eff8.png
+---
+#caption
+vless-websocket-tls 添加入站信息
+:::
 
 **vless+xhttp+reality**
 
 点击添加入站，**基础配置**，协议选择`vless`。**传输**，传输选择`XHTTP`，路径自定一个不易猜到的，以/开头。**安全**，选择Reality，目标和SNI随机一个合适的，然后下面点击获取新证书。随后点击保存更改即可。其他配置保持默认即可。
 
 :::alert{type="question" title="寻找目标域名的条件："}
-
 **基础条件**：
-
 - 不要使用跳转域名（使用跳转完成的域名）
 - 目标网站必须支持 TLS1.3
 - 目标网站必须支持 X25519
 - 目标网站必须支持HTTP/2 (H2)
 - 目标域名必须和 SNI 匹配
-
 **加分项**：
-
 - 尽量别用带 CDN 的网站当目标站
 - 尽量不要使用热门网站
 - 尽量选择 TLS 握手延迟小的网站
 - IP 相近 （使用 RealiTLScanner 扫描即可）
-
 :::
 
 整体配置如下：
 
-![vless-xhttp-reality 添加入站信息](https://img.olinl.com/blog_img/2026/06/20260611124242011-b97c1d.png)
+:::pic
+---
+src: https://img.olinl.com/blog_img/2026/06/20260611124242011-b97c1d.png
+---
+#caption
+less-xhttp-reality 添加入站信息
+:::
 
 ### 添加客户端
 
 点击菜单的客户端，点击添加客户端，填写完**邮箱**，**关联入站** 点击创建即可。
 
-![添加客户端](https://img.olinl.com/blog_img/2026/06/20260611124255583-a122ac.png)
+:::pic
+---
+src: https://img.olinl.com/blog_img/2026/06/20260611124255583-a122ac.png
+---
+#caption
+添加客户端
+:::
 
 ### 连接节点
 
 点击客户端前面操作栏的二维码，可以扫码导入订阅信息或者分入站导入。
 
-![连接节点信息](https://img.olinl.com/blog_img/2026/06/20260611124303601-b4fce9.png)
+:::pic
+---
+src: https://img.olinl.com/blog_img/2026/06/20260611124303601-b4fce9.png
+---
+#caption
+连接节点信息
+:::
+
+
 
 点击详情按钮可查看详情，和导入链接，订阅链接，可导入相应软件进行订阅
 
-![连接节点-详情](https://img.olinl.com/blog_img/2026/06/20260611124311178-a3689a.png)
+:::pic
+---
+src: https://img.olinl.com/blog_img/2026/06/20260611124311178-a3689a.png
+---
+#caption
+连接节点-详情
+:::
 
 ## 鸣谢
 
-[你真的会配置Reality？科学上网翻车频发，其实节点搭建这些坑90%的人都踩过！Reality部署全流程拆解！](https://v2rayssr.com/reality-2.html)
+:::link-card
+---
+title: 你真的会配置Reality？科学上网翻车频发，其实节点搭建这些坑90%的人都踩过！Reality部署全流程拆解！
+link: https://v2rayssr.com/reality-2.html
+---
+:::
