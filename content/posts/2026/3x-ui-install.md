@@ -1,8 +1,8 @@
 ---
 title: 「教程」部署 3X-UI 面板
 description: 记录一下搭建3x-ui面板的过程
-date: 2026-05-30T18:00:00
-updated: 2026-05-30T18:00:00
+date: 2026-05-30 18:00:00
+updated: 2026-05-30 18:00:00
 image: https://img.olinl.com/blog_img/2026/06/20260611124401850-bed1f7.png
 categories:
   - 技术
