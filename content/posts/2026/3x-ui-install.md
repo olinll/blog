@@ -351,9 +351,9 @@ src: https://img.olinl.com/blog_img/2026/06/20260611124311178-a3689a.png
 
 ## 鸣谢
 
-:::link-card
+::link-card
 ---
 title: 你真的会配置Reality？科学上网翻车频发，其实节点搭建这些坑90%的人都踩过！Reality部署全流程拆解！
 link: https://v2rayssr.com/reality-2.html
 ---
-:::
+::
